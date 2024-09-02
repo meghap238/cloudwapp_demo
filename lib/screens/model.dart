@@ -1,20 +1,43 @@
-
-class ListDataModel{
+class DataModel {
   final String title;
-  final String discription;
-  final String date;
   final String time;
+  final String description;
+  final String startDate;
+  final String endDate;
+  final String endTime;
+  final String dayType;
 
-  ListDataModel( { required this.title, required this.discription, required this.date,required this.time, });
+  DataModel({
+    required this.title,
+    required this.time,
+    required this.description,
+    required this.startDate,
+    required this.endDate,
+    required this.endTime,
+    required this.dayType,
+  });
 
+  factory DataModel.fromJson(Map<String, dynamic> json) {
+    return DataModel(
+      title: json['title'],
+      time: json['time'],
+      description: json['description'],
+      startDate: json['startDate'],
+      endDate: json['endDate'],
+      endTime: json['endTime'],
+      dayType: json['dayType'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'time': time,
+      'description': description,
+      'startDate': startDate,
+      'endDate': endDate,
+      'endTime': endTime,
+      'dayType': dayType,
+    };
+  }
 }
-
-List<ListDataModel> dataList = [
-  ListDataModel(
-    title: 'rose',
-    discription: "rose is flower.. ",
-    date: '15-08-2024',
-    time: "55:30"
-  ),
-
-];
